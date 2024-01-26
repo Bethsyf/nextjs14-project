@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google';
 
+import 'app/sass/global.module.scss';
 import { Header } from 'app/components/shared/Header';
 import { Footer } from 'app/components/shared/Footer';
 
