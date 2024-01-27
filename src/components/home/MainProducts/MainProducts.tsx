@@ -1,10 +1,46 @@
-'use client';
+import Image from 'next/image';
+import styles from './MainProducts.module.scss';
+const getProducts = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.SHOPIFY_HOSTNAME}/admin/api/2023-10/products.json`,
+      {
+        headers: new Headers({
+          'X-Shopify-Access-Token': process.env.SHOPIFY_API_KEY || '',
+        }),
+      }
+    );
+    const { products } = await response.json();
+    return products;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-export const MainProducts = () => {
-  console.log('variable de entorno', process.env.NEXT_PUBLIC_SHOPIFY_HOSTNAME);
+export const MainProducts = async () => {
+  const products = await getProducts();
+
+  console.log(products);
+
   return (
-    <section>
-      <h1>MainProducts</h1>
+    <section className={styles.MainProducts}>
+      <h3>✨ New products released!</h3>
+      <div className={styles.grid}>
+        {products?.map((product: any) => {
+          const imageSrc = product.images[0].src;
+          return (
+            <article key={product.id}>
+              <p>{product.title}</p>
+              <Image
+                src={imageSrc}
+                alt={product.title}
+                width={400}
+                height={400}
+              />
+            </article>
+          );
+        })}
+      </div>
     </section>
   );
 };

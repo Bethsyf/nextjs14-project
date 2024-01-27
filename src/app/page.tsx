@@ -6,8 +6,6 @@ export default function Home() {
   console.log('first page home');
   return (
     <main>
-      <Hero />
-      <Description />
       <MainProducts />
     </main>
   );
