@@ -20,8 +20,6 @@ const getProducts = async () => {
 export const MainProducts = async () => {
   const products = await getProducts();
 
-  console.log(products);
-
   return (
     <section className={styles.MainProducts}>
       <h3>✨ New products released!</h3>
@@ -31,12 +29,7 @@ export const MainProducts = async () => {
           return (
             <article key={product.id}>
               <p>{product.title}</p>
-              <Image
-                src={imageSrc}
-                alt={product.title}
-                width={400}
-                height={400}
-              />
+              <Image src={imageSrc} alt={product.title} fill loading="eager" />
             </article>
           );
         })}

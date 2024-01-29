@@ -24,14 +24,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log('hola layout');
-
   return (
     <html lang="en">
       <body className={roboto.className}>
         <Header />
-        <Hero />
-        <Description />
         {children}
         <Footer />
       </body>

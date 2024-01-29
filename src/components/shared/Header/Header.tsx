@@ -3,7 +3,6 @@ import Link from 'next/link';
 import styles from './Header.module.scss';
 
 export const Header = () => {
-  console.log('hola mundo header');
   return (
     <header>
       <nav>
