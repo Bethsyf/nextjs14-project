@@ -16,9 +16,6 @@ export const Description = () => {
     'button-border': hasBorder,
   });
 
-  console.log(buttonStyles);
-
-  console.log(hasBorder);
   return (
     <section className={styles.Description}>
       <button onClick={handleClick} className={buttonStyles}>
