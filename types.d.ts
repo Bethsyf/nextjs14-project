@@ -4,7 +4,7 @@ interface ErrorPageProps {
   }
   
   type ProductType = {
-    id: string;
+    id: string || undefined;
     title: string;
     description: string;
     price: number;
