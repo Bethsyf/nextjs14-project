@@ -10,17 +10,7 @@ export const NewAccountForm = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    try {
-      await handleCreateUser(formData);
-      event.target.reset();
-      setErrors([]);
-    } catch (error) {
-      // Handle errors, update the errors state, or show an error message
-      console.error('Error submitting form:', error);
-      setErrors(['Error submitting form. Please try again.']);
-    } finally {
-      setLoading(false);
-    }
+    await handleCreateUser(formData);
   };
 
   return (
@@ -43,7 +33,7 @@ export const NewAccountForm = () => {
           type="text"
           name="email"
           placeholder="email"
-          // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           disabled={loading}
         />
         <input

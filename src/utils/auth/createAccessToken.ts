@@ -6,8 +6,8 @@ export const createAccessToken = async (email: string, password: string) => {
   const cookiesStore = cookies()
   const graphqlClient = GraphQLClientSingleton.getInstance().getClient()
   const { customerAccessTokenCreate } = await graphqlClient.request(customerAccessTokenCreateMutation, {
-    "email": email,
-    "password": password
+    "email": email as string,
+    "password": password as string
   })
 
   const { accessToken, expiresAt } = customerAccessTokenCreate?.customerAccessToken
