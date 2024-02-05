@@ -10,12 +10,12 @@ export const NewAccountForm = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-
     try {
-      handleCreateUser(formData);
+      await handleCreateUser(formData);
       event.target.reset();
       setErrors([]);
     } catch (error) {
+      // Handle errors, update the errors state, or show an error message
       console.error('Error submitting form:', error);
       setErrors(['Error submitting form. Please try again.']);
     } finally {
@@ -29,13 +29,13 @@ export const NewAccountForm = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
-          name="first_name"
+          name="firstName"
           placeholder="Name"
           disabled={loading}
         />
         <input
           type="text"
-          name="last_name"
+          name="lastName"
           placeholder="Lastname"
           disabled={loading}
         />
@@ -43,10 +43,9 @@ export const NewAccountForm = () => {
           type="text"
           name="email"
           placeholder="email"
-          // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
+          // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           disabled={loading}
         />
-
         <input
           type="text"
           name="phone"
