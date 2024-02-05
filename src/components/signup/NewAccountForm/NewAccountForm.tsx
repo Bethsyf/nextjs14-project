@@ -7,10 +7,20 @@ export const NewAccountForm = () => {
   const [errors, setErrors] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    handleCreateUser(formData);
+
+    try {
+      handleCreateUser(formData);
+      event.target.reset();
+      setErrors([]);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setErrors(['Error submitting form. Please try again.']);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -33,9 +43,10 @@ export const NewAccountForm = () => {
           type="text"
           name="email"
           placeholder="email"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
           disabled={loading}
         />
+
         <input
           type="text"
           name="phone"
