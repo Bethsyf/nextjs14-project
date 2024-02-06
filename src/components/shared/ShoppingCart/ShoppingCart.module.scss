@@ -1,11 +1,22 @@
 @import 'app/sass/variables.module.scss';
 .ShoppingCart {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
   color: black;
   position: relative;
+  .cart {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: black;
+    }
+  }
   .counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     border-radius: 50%;
     background-color: $main-contrast;
@@ -17,22 +28,22 @@
     width: 0.5rem;
     height: 0.5rem;
     font-size: 0.5rem;
+    font-weight: bold;
   }
-  svg {
-    width: 1.25rem;
-    height: 1.25rem;
-    fill: black;
-  }
+
   .items {
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 0.5rem;
     position: absolute;
     background: $color-primary;
     border: 1px solid $border-color;
     border-radius: 8px;
     right: 0;
-    max-width: 320px;
     min-width: 250px;
     padding: 1rem;
     color: antiquewhite;
+    z-index: 2;
   }
   .buyButton {
     background: $main-contrast;
@@ -43,5 +54,13 @@
     border: none;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 1rem;
+    :disabled {
+      background: $color-primary;
+      color: $text-color;
+      cursor: not-allowed;
+      border: 1px solid $border-color;
+      cursor: not-allowed;
+    }
   }
 }

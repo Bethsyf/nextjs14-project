@@ -2,29 +2,56 @@
 import { useState } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useShoppingCart } from 'app/hooks/useShoppingCart';
+import { ShoppingCartItem } from './ShoppingCartItem';
+import { handleCreateCart } from 'app/actions';
 import styles from './ShoppingCart.module.scss';
 
-export const ShoppingCart = () => {
+export default function ShoppingCart() {
   const { cart } = useShoppingCart();
+  const [isBuying, setIsBuying] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const handleOpen = () => setIsOpen(!isOpen);
-  console.log(cart);
+  const hasItems = cart.length > 0;
+
+  const handleOpen = () => {
+    if (hasItems) {
+      setIsOpen(!isOpen);
+    }
+  };
+
+  const handleBuy = async () => {
+    try {
+      setIsBuying(true);
+      const checkoutUrl = await handleCreateCart(cart);
+      if (!checkoutUrl) throw new Error('Error creating checkout');
+      window.localStorage.removeItem('cart');
+      window.location.href = checkoutUrl;
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsBuying(false);
+    }
+  };
 
   return (
-    <button className={styles.ShoppingCart} onClick={handleOpen}>
-      <span className={styles.counter}>{cart.length}</span>
-      <FaShoppingCart />
-      {isOpen && (
+    <div className={styles.ShoppingCart}>
+      {hasItems && <span className={styles.counter}>{cart.length}</span>}
+      <button className={styles.cart} onClick={handleOpen}>
+        <FaShoppingCart />
+      </button>
+      {isOpen && hasItems && (
         <div className={styles.items}>
           {cart.map((item) => (
-            <>
-              <p key={item?.id}>{item?.title}</p>
-              <p>Cantidad: {item.quantity}</p>
-            </>
+            <ShoppingCartItem key={item.id} item={item} />
           ))}
-          <button className={styles.buyButton}>Buy</button>
+          <button
+            onClick={handleBuy}
+            className={styles.buyButton}
+            disabled={isBuying}
+          >
+            Buy
+          </button>
         </div>
       )}
-    </button>
+    </div>
   );
-};
+}
