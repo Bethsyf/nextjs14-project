@@ -23,4 +23,25 @@
     height: 1.25rem;
     fill: black;
   }
+  .items {
+    position: absolute;
+    background: $color-primary;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    right: 0;
+    max-width: 320px;
+    min-width: 250px;
+    padding: 1rem;
+    color: antiquewhite;
+  }
+  .buyButton {
+    background: $main-contrast;
+    color: $text-color;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }

@@ -30,7 +30,10 @@ export const ProductView = ({ product }: ProductViewProps) => {
         <p className={styles.category}>{product?.tags}</p>
         <SanitizeHTML tag="p">{product.description}</SanitizeHTML>
         <span className={styles.price}>$ {product?.price}</span>
-        <ProductViewItemsOrder maxQuantity={product?.quantity} />
+        <ProductViewItemsOrder
+          maxQuantity={product.quantity}
+          product={product}
+        />
       </section>
     </main>
   );
