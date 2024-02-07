@@ -21,9 +21,6 @@ export const Header = async () => {
           <li>
             <Link href="/store">Store</Link>
           </li>
-          <li>
-            <Link href="/test">Test</Link>
-          </li>
         </ul>
       </nav>
       <div className={styles.user}>
