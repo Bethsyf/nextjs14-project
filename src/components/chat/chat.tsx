@@ -1,39 +1,38 @@
 'use client';
 
-import { useCompletion } from 'ai/react';
+import { useChat } from 'ai/react';
 
-export default function Chat() {
-  const {
-    completion,
-    input,
-    stop,
-    isLoading,
-    handleInputChange,
-    handleSubmit,
-  } = useCompletion();
+export const Chat = (props: { agent: string }) => {
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    initialMessages: [
+      {
+        id: '1',
+        role: 'system',
+        content: props.agent,
+      },
+    ],
+  });
 
   return (
-    <div>
+    <main>
+      <section>
+        {messages
+          .filter((m) => m.role !== 'system')
+          .map((m) => (
+            <div className="mb-4" key={m.id}>
+              {m.role === 'user' ? 'User: ' : 'AI: '}
+              {m.content}
+            </div>
+          ))}
+      </section>
       <form onSubmit={handleSubmit}>
-        <output>
-          <p>User: {input}</p>
-          <p>AI: {completion}</p>
-        </output>
-        <label>
-          <input
-            placeholder="Say something..."
-            value={input}
-            onChange={handleInputChange}
-          />
-        </label>
-        <button type="button" onClick={stop}>
-          Stop
-        </button>
-        <button disabled={isLoading} type="submit">
-          Send
-        </button>
-        <br />
+        <input
+          value={input}
+          onChange={handleInputChange}
+          placeholder="Say something..."
+        />
+        <button type="submit">Send</button>
       </form>
-    </div>
+    </main>
   );
-}
+};
