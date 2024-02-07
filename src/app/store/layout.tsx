@@ -14,12 +14,12 @@ export default async function Layout({
     <main className={styles.StoreLayout}>
       <h1>Explore</h1>
       <nav>
-        <ul className={styles.StoreLayout__list}>
+        <ul className={styles.list}>
           {collections?.map((collection: any) => (
             <Link
               key={collection.id}
               href={'/store/' + collection.handle}
-              className={styles.StoreLayout__chip}
+              className={styles.chip}
             >
               {collection.title}
             </Link>
