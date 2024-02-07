@@ -16,10 +16,10 @@ export const Header = async () => {
       <nav>
         <ul className={styles.list}>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">Inicio</Link>
           </li>
           <li>
-            <Link href="/store">Store</Link>
+            <Link href="/store">Tienda</Link>
           </li>
         </ul>
       </nav>
