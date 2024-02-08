@@ -1,6 +1,7 @@
 'use client';
 import { handleLogin } from 'app/actions';
 import styles from './LoginForm.module.scss';
+import Link from 'next/link';
 
 export const LoginForm = () => {
   const handleSubmit = async (event: any) => {
@@ -22,6 +23,9 @@ export const LoginForm = () => {
         <input type="password" name="password" placeholder="password" />
         <input type="submit" name="submit" value="Login" />
       </form>
+      <div className={styles.signup}>
+        <Link href="/signup">Crear Cuenta</Link>
+      </div>
     </div>
   );
 };
