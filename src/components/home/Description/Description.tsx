@@ -31,11 +31,12 @@ export const Description = () => {
       </button>
 
       <div className={styles.Description__text}>
-        <h2>Bring the future today</h2>
+        <h2>Lleva el futuro hoy</h2>
         <p>
-          Future World: Your Gateway to Tomorrow&apos;s Tech! Dive into a world
-          of cutting-edge gadgets and gear. Stay ahead of the curve and redefine
-          your digital lifestyle with us.
+          Mundo Futuro: ¡Tu Puerta de Entrada a la Tecnología del Mañana!
+          Sumérgete en un mundo de dispositivos y equipamiento de vanguardia.
+          Mantente a la vanguardia y redefine tu estilo de vida digital con
+          nosotros.
         </p>
       </div>
     </section>
