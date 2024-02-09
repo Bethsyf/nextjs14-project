@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import styles from './Header.module.scss';
-
 import { validateAccessToken } from 'app/utils/auth/validateAccesToken';
 import dynamic from 'next/dynamic';
 

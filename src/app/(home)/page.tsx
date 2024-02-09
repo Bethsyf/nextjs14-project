@@ -1,5 +1,6 @@
 import { MainProducts } from 'app/components/home/MainProducts';
 import { Metadata } from 'next';
+import Head from 'next/head';
 
 export const metadata: Metadata = {
   title: '✨ Future world',
@@ -8,8 +9,10 @@ export const metadata: Metadata = {
 };
 export default function Home() {
   return (
-    <main>
-      <MainProducts />
-    </main>
+    <>
+      <main>
+        <MainProducts />
+      </main>
+    </>
   );
 }

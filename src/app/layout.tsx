@@ -1,7 +1,8 @@
 import { Roboto } from 'next/font/google';
 import { Header } from 'app/components/shared/Header';
 import { Footer } from 'app/components/shared/Footer';
-import 'app/sass/global.module.scss';
+import styles from 'app/sass/global.module.scss';
+import Head from 'next/head';
 
 const roboto = Roboto({
   weight: ['100', '300', '500', '700'],
@@ -10,12 +11,15 @@ const roboto = Roboto({
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <body className={`${roboto.className} ${styles.body}`}>
         <Header />
         {children}
         <Footer />

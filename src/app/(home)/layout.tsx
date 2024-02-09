@@ -7,10 +7,10 @@ export default function HomeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <main>
       <Hero />
       <Description />
       {children}
-    </div>
+    </main>
   );
 }
