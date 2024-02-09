@@ -4,8 +4,13 @@ import {
   getCollections,
 } from 'app/services/shopify/collections';
 import { getProducts } from 'app/services/shopify/products';
+import { Metadata } from 'next';
 
 export const runtime = 'edge';
+
+export const metadata: Metadata = {
+  title: 'Store',
+};
 
 interface CategoryProps {
   params: {
